@@ -16,7 +16,4 @@ describe Stock do
     end
   end
 
-  describe "#price" do
-    it ""
-
 end
