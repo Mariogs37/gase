@@ -22,7 +22,7 @@ describe Client do
 
   describe "#create_account" do
     it "creates an account" do
-      client.create_account(500_000)
+      client.create_account(250_000)
       expect(client.account).to_not eq nil
     end
   end

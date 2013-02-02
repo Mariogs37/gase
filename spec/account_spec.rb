@@ -26,4 +26,13 @@ describe Account do
     end
   end
 
+  describe "view_balance" do
+    it "displays the balance in a client's account" do
+      account.balance('Bob')
+      expect(account.balance('Bob')).to eq 250_000
+    end
+  end
+
+
+
 end
