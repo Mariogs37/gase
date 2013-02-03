@@ -6,8 +6,8 @@ require_relative 'portfolio'
 require_relative 'stock'
 
 def menu
-  puts 'clear'
-  puts "*** General Assembly Stock Exchange ***\n\n"
+  puts `clear`
+  puts "*** General Assembly Stock Exchange ***\n\n".color(:blue)
   puts '0 : Become a Stock Exchange Client'
   puts '1 : List Stock Exchange Clients'
   puts '2 : Add Account'
@@ -19,7 +19,7 @@ def menu
   puts '8 : Display Portfolio Value'
   puts '9 : Get Live Stock Quote'
   puts "Q : Quit\n\n"
-  gets.chomp
+  gets.chomp.downcase
 end
 
 def list_clients
@@ -64,7 +64,7 @@ def buy_stock
   puts "#{stock_name} is currently trading at #{stock_price}"
   print "Number of shares to buy: "
   num_to_buy = gets.chomp
-  while (num_to_buy > ($stock_exchange.clients[name].accounts[acount_name].balance / stock_price) || (num_to_buy <= 0) || (num_to_buy.class != "Integer")
+  while (num_to_buy) > ($stock_exchange.clients[name].accounts[acount_name].balance / stock_price) || (num_to_buy <= 0) || (num_to_buy.class != "Integer")
     puts "Please enter a valid number of shares to buy!"
     num_to_buy = gets.chomp
   end

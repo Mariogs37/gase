@@ -5,7 +5,7 @@ require_relative 'data'
 
 response = menu
 
-while response != 'Q'
+while response != 'q'
   case response
   when '0' then create_client
   when '1' then puts list_clients
@@ -18,6 +18,6 @@ while response != 'Q'
   when '8' then puts portfolio_value
   when '9' then puts get_quote
   end
-
   response = menu
 end
+puts "You have quit the program".color(:red)
