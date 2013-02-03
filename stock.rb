@@ -1,5 +1,3 @@
-
-
 class Stock
   attr_accessor :name
   def initialize(name)

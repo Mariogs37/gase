@@ -7,7 +7,6 @@ response = menu
 
 while response != 'q'
   case response
-  when '0' then create_client
   when '1' then puts list_clients
   when '2' then create_account
   when '3' then create_portfolio

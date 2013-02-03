@@ -1,8 +1,8 @@
 class Account
-  attr_accessor :name, :portfolios, :balance
-  def initialize(name)
-    @name = name
+  attr_accessor :owner, :portfolios, :balance
+  def initialize(owner, balance)
+    @owner = owner
     @portfolios = {}
-    @balance = 0
+    @balance = balance
   end
 end

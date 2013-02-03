@@ -1,16 +1,18 @@
 require 'rainbow'
+require 'pry'
 require_relative 'stock_exchange'
-require_relative 'client'
 require_relative 'account'
 require_relative 'portfolio'
 require_relative 'stock'
+require_relative 'account'
+require_relative 'stock_exchange'
+require_relative 'data'
 
 def menu
   puts `clear`
   puts "*** General Assembly Stock Exchange ***\n\n".color(:blue)
-  puts '0 : Become a Stock Exchange Client'
   puts '1 : List Stock Exchange Clients'
-  puts '2 : Add Account'
+  puts '2 : Add a Client Account'
   puts '3 : Add Portfolio'
   puts '4 : Buy Stock'
   puts '5 : Sell Stock'
@@ -23,43 +25,35 @@ def menu
 end
 
 def list_clients
-  $stock_exchange.clients.keys
-end
-
-def create_client
-  print 'Name: '
-  name = gets.chomp
-  $stock_exchange.clients[name] = Client.new(name)
+  puts $gase.accounts.keys
+  gets
 end
 
 def create_account
   print 'Name: '
   name = gets.chomp
-  print 'New Account Name: '
-  account_name = gets.chomp
-  $stock_exchange.clients[name].accounts[account_name] = Account.new(account_name)
+  print 'Deposit: '
+  deposit = gets.to_i #need to find a way to ignore commas
+  $gase.accounts[name] = Account.new(name, deposit)
 end
 
 def create_portfolio
   print 'Name: '
   name = gets.chomp
-  print 'Account You Would Like to Add New Portfolio To: '
-  account_name = gets.chomp
   print 'New Portfolio Name: '
   portfolio_name = gets.chomp
-  $stock_exchange.clients[name].accounts[account_name].portfolios[portfolio_name] = Portfolio.new(portfolio_name)
+  $gase.accounts[name].portfolios[portfolio_name] = Portfolio.new(portfolio_name)
 end
 
 def buy_stock
-  print 'Name: '
+  print 'Client name: '
   name = gets.chomp
-  print 'Buy stock for which account? '
-  account_name = gets.chomp
   print 'Buy stock for which portfolio? '
+  print $gase.accounts[name].portfolios.keys.join(', ') + ' '
   portfolio_name = gets.chomp
-  print 'Name of stock you wish to buy: '
-  stock_name = gets.chomp
-  puts "You have #{$stock_exchange.clients[name].accounts[acount_name].portfolios[portfolio_name].num_of_stocks[stock_name]} shares of #{stock_name}"
+  print 'Stock ticker symbol: '
+  stock_symbol = gets.chomp.upcase
+  puts "You have #{$gase.accounts[name].portfolios[portfolio_name].stocks[stock_symbol].count} shares of #{stock_name}"
   #stock_price = get stock quote
   puts "#{stock_name} is currently trading at #{stock_price}"
   print "Number of shares to buy: "
@@ -144,3 +138,4 @@ def account_value
   end
   account_value
 end
+binding.pry

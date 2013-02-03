@@ -1,6 +1,10 @@
-class Stock_Exchange
-  attr_accessor :clients
+class StockExchange
+  attr_accessor :accounts
   def initialize
-    @clients = {}
+    @accounts = {}
   end
+
+  # def list_clients
+
+  # end
 end
