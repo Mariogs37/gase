@@ -10,13 +10,13 @@ describe Stock do
     end
   end
 
-  describe "#name" do
-    it "has a name" do
-      expect(stock.name).to eq 'AAPL'
-    end
-  end
+  # describe "#name" do
+  #   it "has a name" do
+  #     expect(stock.name).to eq 'AAPL'
+  #   end
+  # end
 
-  describe "#price" do
-    it ""
+  # describe "#price" do
+  #   it ""
 
 end
