@@ -18,7 +18,7 @@ describe StockExchange do
     end
   end
 
-  describe "add_client" do
+  describe "#add_client" do
     it "adds a client" do
       stock_exchange.add_client('Bob')
       expect(stock_exchange.clients.keys).to eq ['Bob']

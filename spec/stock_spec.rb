@@ -16,4 +16,10 @@ describe Stock do
     end
   end
 
+  describe "#price" do
+    it "has a price" do
+      expect(stock.price). to eq YahooFinance::get_quotes(YahooFinance::StandardQuote, 'AAPL')['AAPL'].lastTrade
+    end
+  end
+
 end

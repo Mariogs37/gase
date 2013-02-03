@@ -16,4 +16,11 @@ describe Portfolio do
     end
   end
 
+  describe "#add_stock" do
+    it "adds stock to the chosen portfolio" do
+      expect(portfolio.stock). to eq 'AAPL'
+    end
+  end
+
+
 end
