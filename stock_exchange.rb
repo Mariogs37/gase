@@ -3,8 +3,4 @@ class StockExchange
   def initialize
     @accounts = {}
   end
-
-  # def list_clients
-
-  # end
 end
