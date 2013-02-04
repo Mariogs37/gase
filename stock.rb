@@ -1,5 +1,3 @@
-require 'yahoofinance'
-
 class Stock
   attr_accessor :name, :shares, :price
   def initialize(name)

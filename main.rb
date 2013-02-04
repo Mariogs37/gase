@@ -1,7 +1,7 @@
 require 'rainbow'
 require 'pry'
 require_relative 'functions'
-require_relative 'data'
+binding.pry
 
 response = menu
 
@@ -19,4 +19,5 @@ while response != 'q'
   end
   response = menu
 end
+
 puts "You have quit the program".color(:red)

@@ -1,11 +1,9 @@
-require 'rainbow'
-require 'pry'
+
 require 'YahooFinance'
 require_relative 'stock_exchange'
 require_relative 'account'
 require_relative 'portfolio'
 require_relative 'stock'
-require_relative 'account'
 require_relative 'data'
 
 def menu
