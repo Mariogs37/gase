@@ -3,6 +3,6 @@ class Account
   def initialize(owner, balance)
     @owner = owner
     @portfolios = {}
-    @balance = balance
+    @balance = balance.round
   end
 end

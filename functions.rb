@@ -41,10 +41,10 @@ def create_account
 end
 
 def create_portfolio
-  print 'Name: '
+  print 'Account Owner: '
   name = gets.chomp.capitalize
   print 'New Portfolio Name: '
-  portfolio_name = gets.chomp
+  portfolio_name = gets.chomp.capitalize
   $gase.accounts[name].portfolios[portfolio_name] = Portfolio.new(portfolio_name)
   puts "Portfolio added. Press 'enter' to continue.".color(:yellow)
   gets
@@ -58,17 +58,22 @@ def buy_stock
   portfolio_name = gets.chomp.capitalize
   print 'Stock ticker symbol: '
   $stock_symbol = gets.chomp.upcase
-  if $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol] != nil
-    puts "You have #{$gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol].shares} shares of #{$stock_symbol}"
-  else
+  begin
+    if $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol] != nil
+      puts "You have #{$gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol].shares} shares of #{$stock_symbol}"
+    else
+      puts "You have 0 shares of #{$stock_symbol}"
+      $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol] = Stock.new($stock_symbol)
+    end
+  rescue
     puts "You have 0 shares of #{$stock_symbol}"
+    $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol] = Stock.new($stock_symbol)
   end
   print "#{$stock_symbol} is currently trading at "
   puts stock_quote
   puts "You have $#{$gase.accounts[name].balance} in your account."
   print "Number of shares to buy: "
   num_to_buy = gets.to_i
-  $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol] = Stock.new($stock_symbol)
   while (num_to_buy * $gase.accounts[name].portfolios[portfolio_name].stocks[$stock_symbol].price) > ($gase.accounts[name].balance) || (num_to_buy <= 0)
     puts "Please enter a valid number of shares to buy!"
     num_to_buy = gets.to_i
