@@ -1,7 +1,6 @@
 require 'rainbow'
 require 'pry'
 require_relative 'functions'
-binding.pry
 
 response = menu
 
